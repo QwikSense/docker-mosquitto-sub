@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Containers>
+  <Beta>False</Beta>
+<Category>Network:Other Other:</Category>
+  <Name>qwiksense-mosquittosub</Name>
+  <Description>
+    mosquitto_sub receives messages from an MQTT broker and outputs these to a file.[br][br]
+    [b][u][span style='color: #E80000;']Configuration[/span][/u][/b][br]
+    [b]/config[/b] This is where couchpotato will store it's configuration file, database and logs.[br]
+    [b]/data[/b] This path is used retrieve the downloaded files by your downloader application.[br]
+  </Description>
+  <Overview>
+    Message comes in, message goes out.
+  </Overview>
+  <Support>https://github.com/QwikSense/docker-mosquitto-sub/issues</Support>
+  <Registry>https://registry.hub.docker.com/u/qwiksense/mosquitto-sub/</Registry>
+  <GitHub>https://github.com/QwikSense/docker-mosquitto-sub</GitHub>
+  <Repository>qwiksense/mosquitto-sub</Repository>
+  <Project>https://www.qwiksense.com/</Project>
+  <BindTime>true</BindTime>
+  <Privileged>false</Privileged>
+    <Networking>
+    <Mode>bridge</Mode>
+  </Networking>
+  <Environment>
+    <Variable>
+      <Name>MOSQUITTO_USER</Name>
+      <Value>user</Value>
+    </Variable>
+    <Variable>
+      <Name>MOSQUITTO_PASSWORD</Name>
+      <Value>password</Value>
+    </Variable>
+    <Variable>
+      <Name>MOSQUITTO_HOST</Name>
+      <Value>localhost</Value>
+    </Variable>
+    <Variable>
+      <Name>MOSQUITTO_TOPIC</Name>
+      <Value>#</Value>
+    </Variable>
+    <Variable>
+      <Name>MOSQUITTO_PORT</Name>
+      <Value>1883</Value>
+    </Variable>
+    <Variable>
+      <Name>MOSQUITTO_CLIENTID</Name>
+      <Value>qwiksense_1</Value>
+    </Variable>
+    <Variable>
+      <Name>MOSQUITTO_QOS</Name>
+      <Value>1</Value>
+    </Variable>
+  </Environment>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/cache/appdata/mosquitto-sub</HostDir>
+      <ContainerDir>/mnt/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Icon>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/images/couchpotato-icon.png</Icon>
+  <ExtraParams></ExtraParams>
+</Containers>
