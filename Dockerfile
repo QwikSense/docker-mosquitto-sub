@@ -1,4 +1,5 @@
 FROM alpine:latest
-MAINTAINER 
-RUN apk add --no-cache mosquitto-clients
-ENTRYPOINT ["mosquitto_sub -h $MOSQUITTO_HOST -c -q $MOSQUITTO_QOS -i $MOSQUITTO_CLIENTID -p $MOSQUITTO_PORT -t $MOSQUITTO_TOPIC -u $MOSQUITTO_USER -P $MOSQUITTO_PASS -v -d >> /mnt/data/mosquitto.out"]
+RUN apk -U upgrade && apk add --no-cache mosquitto-clients coreutils && rm -rf /tmp/src && rm -rf /var/cache/apk/*
+ADD run_mosquitto_sub.sh /run.sh
+RUN chmod u+x /run.sh
+ENTRYPOINT ["/run.sh"]
